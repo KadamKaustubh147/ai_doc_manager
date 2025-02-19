@@ -836,10 +836,6 @@ select {
   display: none;
 }
 
-.h-screen {
-  height: 100vh;
-}
-
 .h-10 {
   height: 2.5rem;
 }
@@ -850,6 +846,10 @@ select {
 
 .h-5 {
   height: 1.25rem;
+}
+
+.h-screen {
+  height: 100vh;
 }
 
 .w-10 {
@@ -947,14 +947,14 @@ select {
   border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
 }
 
-.bg-gray-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
-}
-
 .bg-blue-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity, 1));
+}
+
+.bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
 }
 
 .bg-white {
@@ -994,14 +994,14 @@ select {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
-}
-
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
 }
 
 .text-sm {
