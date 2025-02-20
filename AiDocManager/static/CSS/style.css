@@ -1,0 +1,8 @@
+.bg-custom-gradient {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../assets/Rectangle.svg');
+    background-size: cover; /* Adjust to 'contain' if needed */
+    background-position: center;
+    background-repeat: no-repeat;
+}

@@ -182,3 +182,8 @@ SOCIALACCOUNT_PROVIDERS = {
 
 
 LOGIN_URL = '/accounts/login/'
+
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
