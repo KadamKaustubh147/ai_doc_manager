@@ -18,6 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 from . import views
+from django.conf.urls import handler404
+from .views import custom404
+from allauth.account.views import LoginView
+
+handler404 = custom404
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +31,5 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("idk/", include("chatbot.urls")),
     path('accounts/', include('allauth.urls')),  # Django Allauth URLs
+    # path("accounts/login", LoginView.as_view(template_name="accounts/login.html"), name="account_login"),
 ]

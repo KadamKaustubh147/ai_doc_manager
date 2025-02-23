@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block styles %}
+  {{ block.super }}
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+    <h1>ERROR 404</h1>
+    <h2>PAGE NOT FOUND</h2>
+
+{% endblock %}
+
+{% comment %} do it during production, use whitenoise and collectstatic {% endcomment %}
