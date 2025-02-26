@@ -31,5 +31,6 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("idk/", include("chatbot.urls")),
     path('accounts/', include('allauth.urls')),  # Django Allauth URLs
-    # path("accounts/login", LoginView.as_view(template_name="accounts/login.html"), name="account_login"),
+    path('accounts/signup/', views.CustomSignupView, name='account_signup'),
+    path('hello/', views.hello, name='hello'),
 ]

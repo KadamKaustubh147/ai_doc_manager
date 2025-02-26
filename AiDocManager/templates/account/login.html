@@ -3,6 +3,7 @@
 {% load socialaccount %} 
 {% load static tailwind_tags %}
 {% load static %} 
+{% load partials %}
 
 {% block maal %}
 
@@ -26,8 +27,10 @@
         <p class="whitespace-nowrap text-white">
           If you have not created an account yet, then please
           <a
-            class="font-semibold text-[#5917FF] underline underline-offset-4 hover:cursor-pointer"
+            class="font-semibold text-[#5917FF] underline underline-offset-4 hover:cursor-pointer fade-me-out"
             hx-get="{% url 'account_signup' %}" hx-target="#htmx_container"
+            hx-swap="outerHTML swap:1s"
+            hx-push-url="true"
           >
             Sign up
           </a>
@@ -125,5 +128,8 @@
     </div>
   </div>
 </div>
+
+{% comment %} {% partial image%} {% endcomment %}
+{% comment %} {% include "landing.html#test-partial" %} {% endcomment %}
 
 {% endblock %}

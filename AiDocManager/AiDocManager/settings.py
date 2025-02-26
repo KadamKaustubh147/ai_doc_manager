@@ -51,8 +51,8 @@ INSTALLED_APPS = [
     'allauth.account',  # Username & password authentication
     'allauth.socialaccount',  # Social authentication
     'allauth.socialaccount.providers.google',  # Google login
-    "django_htmx",
     "template_partials",
+    "django_htmx",
 ]
 
 MIDDLEWARE = [
@@ -71,13 +71,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'AiDocManager.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             BASE_DIR / "templates",    
         ],
-        'APP_DIRS': True,
+        # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -85,6 +86,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            "builtins": ["template_partials.templatetags.partials"],
         },
     },
 ]
@@ -211,3 +213,6 @@ if all([ADMIN_USER_NAME, ADMIN_USER_EMAIL]):
         (f'{ADMIN_USER_NAME}', f'{ADMIN_USER_EMAIL}')
     ]
     MANAGERS=ADMINS
+    
+    
+
