@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'allauth.account',  # Username & password authentication
     'allauth.socialaccount',  # Social authentication
     'allauth.socialaccount.providers.google',  # Google login
+    "django_htmx",
+    "template_partials",
 ]
 
 MIDDLEWARE = [
@@ -63,6 +65,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "django_browser_reload.middleware.BrowserReloadMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    "django_htmx.middleware.HtmxMiddleware",
 
 ]
 

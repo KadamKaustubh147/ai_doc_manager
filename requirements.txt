@@ -12,6 +12,7 @@ dj-database-url==2.3.0
 Django==5.1.6
 django-allauth==65.4.1
 django-browser-reload==1.18.0
+django-htmx==1.22.0
 django-tailwind==3.8.0
 django-template-partials==24.4
 idna==3.10
