@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # white noise
     'django.contrib.staticfiles',
     'chatbot',
     'tailwind',
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',  # Social authentication
     'allauth.socialaccount.providers.google',  # Google login
     "django_htmx",
+    
 ]
 
 MIDDLEWARE = [
@@ -66,6 +68,7 @@ MIDDLEWARE = [
     "django_browser_reload.middleware.BrowserReloadMiddleware",
     "allauth.account.middleware.AccountMiddleware",
     "django_htmx.middleware.HtmxMiddleware",
+
 
 ]
 
@@ -215,4 +218,3 @@ if all([ADMIN_USER_NAME, ADMIN_USER_EMAIL]):
     MANAGERS=ADMINS
     
     
-

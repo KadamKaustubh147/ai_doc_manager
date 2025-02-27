@@ -128,3 +128,8 @@ nav{
   opacity: 0;
   transition: opacity 1s ease-out;
 }
+
+.no-click {
+    pointer-events: none;  /* Disables clicks on content */
+    user-select: none;     /* Prevents text selection */
+}
