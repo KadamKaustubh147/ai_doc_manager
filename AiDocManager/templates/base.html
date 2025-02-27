@@ -18,18 +18,16 @@
   {% endblock %}
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
   <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
-
-  
 </head>
 <body>
 
   <section class="w-full min-h-screen bg-custom-gradient flex flex-col relative" id="cta">
-    <nav class="absolute bg-transparent w-full font-[Barlow] font-semibold">
+    <nav class="absolute bg-transparent w-full font-[Barlow] font-semibold z-20">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="{% url 'home' %}" class="flex items-center space-x-3">
             <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
             <span class="self-center text-2xl font-semibold dark:text-white">DocM</span>
-          </a>
+        </a>
         <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden focus:outline-none">
             <span class="sr-only">Open main menu</span>
             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -47,7 +45,7 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                   </svg>
                 </button>
-                <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
+                <div id="dropdownNavbar" class="z-30 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-400">
                       <li>
                         <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Dashboard</a>
@@ -74,7 +72,7 @@
               <a
               hx-get="{% url 'account_login' %}"
               hx-target="#cta-form-container"
-              hx-swap="outerHTML swap 0.0.1s"
+              hx-swap="innerHTML"
               class="block py-2 px-3 text-gray-900 md:hover:text-blue-700 hover:cursor-pointer dark:text-white fade-me-out"
               >LOG IN</a>
             </li>
@@ -87,9 +85,29 @@
       </div>
     </nav>
     
+    <!-- This is the container where the login form will be loaded -->
     <div id="cta-form-container" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"></div>
-    {% block maal %}{% endblock %}
- 
+    
+    <!-- Main content area that should stay visible behind the form -->
+    {% block maal %}
+    <div class="relative z-0 flex items-center justify-between px-8 w-full h-full">
+      <!-- Left side content -->
+      <div class="w-1/2">
+        <h1 class="text-6xl font-bold text-white mb-4">DocM</h1>
+        <p class="text-xl text-white mb-6">Turn information chaos into clarity with intelligent document management.</p>
+        <p class="text-lg text-white/80 mb-10">From checkout to global sales tax compliance, companies around the world use Flowbite to simplify their payment stack.</p>
+        <a href="#" class="bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-md inline-flex items-center">
+          Get started <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+      </div>
+      
+      <!-- Right side image -->
+      <div class="w-1/2 flex justify-end">
+        <!-- Replace with your actual crystal image path -->
+        <img src="{% static 'images/crystal.png' %}" alt="Crystal" class="max-w-md">
+      </div>
+    </div>
+    {% endblock %}
   </section>
 
 </body>
