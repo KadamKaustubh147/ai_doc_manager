@@ -86,7 +86,7 @@
     </nav>
     
     <!-- This is the container where the login form will be loaded -->
-    <div id="cta-form-container" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"></div>
+    <div id="cta-form-container" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 *:md:w-full *:w-full *:py-6 *:md:py-6"></div>
     
     <!-- Main content area that should stay visible behind the form -->
     {% block maal %}
@@ -109,6 +109,7 @@
     </div>
     {% endblock %}
   </section>
+  <script src="{% static 'JS/script.js' %}"></script>
 
 </body>
 </html>

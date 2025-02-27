@@ -803,6 +803,10 @@ select {
   position: static;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -992,6 +996,14 @@ select {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-1\/2 {
+  height: 50%;
+}
+
+.h-2\/3 {
+  height: 66.666667%;
 }
 
 .min-h-screen {
@@ -1509,6 +1521,16 @@ select {
   --tw-ring-offset-width: 2px;
 }
 
+.blur {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.backdrop-filter {
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+
 .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -1523,6 +1545,21 @@ select {
 
 .\*\:w-full > * {
   width: 100%;
+}
+
+.\*\:py-3 > * {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.\*\:py-5 > * {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.\*\:py-6 > * {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .hover\:cursor-pointer:hover {
@@ -1650,6 +1687,10 @@ select {
     width: auto;
   }
 
+  .md\:w-full {
+    width: 100%;
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
@@ -1684,6 +1725,25 @@ select {
   .md\:text-blue-700 {
     --tw-text-opacity: 1;
     color: rgb(29 78 216 / var(--tw-text-opacity, 1));
+  }
+
+  .\*\:md\:w-full > * {
+    width: 100%;
+  }
+
+  .\*\:md\:py-3 > * {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .\*\:md\:py-5 > * {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .\*\:md\:py-6 > * {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 
   .md\:hover\:bg-transparent:hover {
