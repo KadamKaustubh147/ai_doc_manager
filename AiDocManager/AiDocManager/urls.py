@@ -23,14 +23,15 @@ from .views import custom404
 from allauth.account.views import LoginView
 
 handler404 = custom404
-
+import pdb
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
     path("", views.home, name="home"),
     path("idk/", include("chatbot.urls")),
+    # pdb.set_trace(),
+    path('accounts/signup/', views.CustomSignupView.as_view(), name='account_signup'),
+    path('accounts/login/', views.CustomLoginView.as_view(), name='account_login'),
     path('accounts/', include('allauth.urls')),  # Django Allauth URLs
-    path('accounts/signup/', views.CustomSignupView, name='account_signup'),
-    path('hello/', views.hello, name='hello'),
 ]

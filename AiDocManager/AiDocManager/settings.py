@@ -47,11 +47,11 @@ INSTALLED_APPS = [
     'theme',
     'django_browser_reload',
     'django.contrib.sites',  # Required by allauth
+    'template_partials',
     'allauth',
     'allauth.account',  # Username & password authentication
     'allauth.socialaccount',  # Social authentication
     'allauth.socialaccount.providers.google',  # Google login
-    "template_partials",
     "django_htmx",
 ]
 
@@ -86,7 +86,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            "builtins": ["template_partials.templatetags.partials"],
+            # "builtins": ["template_partials.templatetags.partials"],
         },
     },
 ]

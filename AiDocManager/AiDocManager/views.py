@@ -8,20 +8,21 @@ def home(request):
 def custom404(request, exception):
     return render(request, '404.html', status=404)
 
-# def CustomSignupView(SignupView):
-#     def get(self, request, *args, **kwargs):
-#         if request.htmx:
-#             return render(request, "account/signup.html#htmx_signup")
-#         # return super().get(request, *args, **kwargs)
-#         return render(request, "account/signup.html")
 
-def CustomSignupView(SignupView):
-    def get(self,request,*args, **kwargs):
+class CustomLoginView(LoginView):
+    def get(self, request, *args, **kwargs):
         if request.htmx:
-            self.template_name = "account/signup.html#htmx_signup"
-            return render(request, "account/signup.html#htmx_signup")
-        # return super().get(request, *args, **kwargs)
-        return render(request, "account/signup.html")
+            print("htmx")
+            return render(request, "account/login.html#htmx_login")
+        print('rendering og')
+        return render(request, "account/login.html")
+    
 
-def hello(request):
-    render(request, 'hello.html')
+class CustomSignupView(SignupView):
+    def get(self, request, *args, **kwargs):
+        if request.htmx:
+            print("htmx")
+            return render(request, "account/signup.html#htmx_signup")
+        print('rendering og')
+        return render(request, "account/signup.html")
+    
