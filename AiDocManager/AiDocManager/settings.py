@@ -187,6 +187,13 @@ SOCIALACCOUNT_PROVIDERS = {
         'SCOPE': [
             'profile',
             'email',
+            "openid",
+            "https://www.googleapis.com/auth/drive.file",
+            "https://www.googleapis.com/auth/drive.appdata",
+            "https://www.googleapis.com/auth/drive.install",
+            "https://www.googleapis.com/auth/docs",
+            "https://www.googleapis.com/auth/drive",
+            "https://www.googleapis.com/auth/drive.metadata"
         ],
         'AUTH_PARAMS': {'access_type': 'online'},
     }

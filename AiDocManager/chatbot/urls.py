@@ -5,6 +5,7 @@ from . import views
 
 
 urlpatterns = [
+    path("", views.app, name="app"),
     path("profile", views.profile, name="profile"),
     # path("google-drive/connect/", connect_google_drive, name="connect_google_drive"),
     # path("google-drive-callback/", google_drive_callback, name="google_drive_callback"),
