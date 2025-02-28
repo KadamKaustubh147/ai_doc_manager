@@ -811,12 +811,16 @@ select {
   position: relative;
 }
 
+.left-0 {
+  left: 0px;
+}
+
 .left-1\/2 {
   left: 50%;
 }
 
-.right-4 {
-  right: 1rem;
+.top-0 {
+  top: 0px;
 }
 
 .top-1\/2 {
@@ -825,6 +829,10 @@ select {
 
 .top-3 {
   top: 0.75rem;
+}
+
+.right-4 {
+  right: 1rem;
 }
 
 .top-6 {
@@ -890,6 +898,10 @@ select {
   margin-bottom: 1.5rem;
 }
 
+.me-2 {
+  margin-inline-end: 0.5rem;
+}
+
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -916,6 +928,10 @@ select {
 
 .mt-1 {
   margin-top: 0.25rem;
+}
+
+.mt-14 {
+  margin-top: 3.5rem;
 }
 
 .mt-2 {
@@ -990,6 +1006,14 @@ select {
   height: 1.25px;
 }
 
+.h-\[100vh\] {
+  height: 100vh;
+}
+
+.h-\[50vh\] {
+  height: 50vh;
+}
+
 .h-full {
   height: 100%;
 }
@@ -1032,6 +1056,10 @@ select {
 
 .w-5 {
   width: 1.25rem;
+}
+
+.w-\[100\%\] {
+  width: 100%;
 }
 
 .w-full {
@@ -1097,6 +1125,10 @@ select {
   flex-wrap: wrap;
 }
 
+.items-start {
+  align-items: flex-start;
+}
+
 .items-center {
   align-items: center;
 }
@@ -1150,10 +1182,6 @@ select {
   border-radius: 0.25rem;
 }
 
-.rounded-2xl {
-  border-radius: 1rem;
-}
-
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -1164,6 +1192,10 @@ select {
 
 .rounded-sm {
   border-radius: 0.125rem;
+}
+
+.rounded-2xl {
+  border-radius: 1rem;
 }
 
 .border {
@@ -1191,6 +1223,11 @@ select {
 .bg-\[\#000000\] {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[\#01796F\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(1 121 111 / var(--tw-bg-opacity, 1));
 }
 
 .bg-\[\#37376E\] {
@@ -1474,6 +1511,14 @@ select {
   text-underline-offset: 4px;
 }
 
+.opacity-20 {
+  opacity: 0.2;
+}
+
+.opacity-35 {
+  opacity: 0.35;
+}
+
 .shadow-md {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
@@ -1505,6 +1550,18 @@ select {
   --tw-ring-offset-width: 2px;
 }
 
+.backdrop-blur-3xl {
+  --tw-backdrop-blur: blur(64px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+
+.backdrop-blur-xl {
+  --tw-backdrop-blur: blur(24px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+
 .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -1526,17 +1583,17 @@ select {
   padding-bottom: 1.5rem;
 }
 
+.\*\:text-white > * {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
 .hover\:cursor-pointer:hover {
   cursor: pointer;
 }
 
 .hover\:border-transparent:hover {
   border-color: transparent;
-}
-
-.hover\:bg-\[\#37376E\]:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(55 55 110 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:bg-gray-100:hover {
@@ -1547,6 +1604,11 @@ select {
 .hover\:bg-green-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(22 163 74 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-\[\#37376E\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 55 110 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:text-gray-400:hover {
