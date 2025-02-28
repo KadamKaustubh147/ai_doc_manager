@@ -30,7 +30,7 @@
           >SIGN IN</a
         >
         <a
-          class="text-white fade-me-out hover:cursor-pointer fade-me-out rounded-lg"
+          class="text-white p-1.5 px-12 fade-me-out hover:cursor-pointer fade-me-out rounded-lg"
           hx-get="{% url 'account_signup' %}"
           hx-target="#htmx_container"
           hx-swap="outerHTML swap:0.01s"
@@ -75,7 +75,7 @@
             <input
               type="text"
               id="username"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer rounded-lg"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               name="login"
               placeholder=" "
               required
@@ -91,7 +91,7 @@
           <input
             type="password"
             id="password"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer rounded-lg"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             name="password"
             placeholder=" "
             required
@@ -174,14 +174,12 @@
         </button>
       </a>
       {% endcomment %}
-      <form action="{% provider_login_url 'google' %}" method="POST">
-        {% csrf_token %}
-      <button
-        type="submit"
-        class="google-bg flex items-center justify-center w-full hover:cursor-pointer"
+      <a
+        href="{% provider_login_url 'google' %}"
+        class="google-bg flex items-center justify-center w-full"
       >
         <div
-          class="w-4/5 flex items-center justify-center rounded-md border px-4 py-2 outline-none bg-white text-black transition hover:border-transparent focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 font-[barlow]"
+          class="w-4/5 flex items-center justify-center rounded-md border px-4 py-2 outline-none bg-white text-black font-medium transition hover:border-transparent focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 font-[barlow] transition duration-300 hover:bg-gray-300 hover:text-gray-800 hover:border-gray-400 focus:ring-2"
         >
           <img
             class="mr-2 h-5"
@@ -190,12 +188,11 @@
           />
           Log in with Google
         </div>
-      </button>
-    </form>
+      </a>
     </div>
     <button class="absolute top-6 right-4 text-white text-3xl font-light hover:text-gray-400" onclick="document.getElementById('htmx_container').style.display='none'">&times;</button>
   </div>
 </div>
 
 {% endpartialdef htmx_login %}
-{% endblock %} 
+{% endblock %}
