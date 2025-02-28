@@ -6,13 +6,14 @@
     <div class="flex flex-col mt-14 w-full items-center *:text-white">
         <img src="{% static 'assets/avatar.svg' %}" alt="profile" height="256px" width="256px">
         <div class="w-1/8 flex flex-col items-start">
+
         <p class="">Username: {{user}}</p>
         <p class="">Email: {{user.email}}</p>
         {% comment %} <p>{{pfp}}</p> {% endcomment %}
         </div>
         <div>
             <button type="button" class="focus:outline-none text-white bg-[#01796F] font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Password Reset</button>
-            <button type="button" class="focus:outline-none text-white bg-[#01796F] font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Connect with Google Drive</button>
+            <a type="button" class="focus:outline-none text-white bg-[#01796F] font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2" href="{% url 'connect_google_drive' %}">Connect with Google Drive</a>
 
         </div>
     </div>
