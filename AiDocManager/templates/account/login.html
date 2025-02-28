@@ -8,9 +8,9 @@
  {% partialdef htmx_login inline=true %} 
 
 <div
-  class="flex flex-wrap bg-[#000000] md:w-1/3 w-3/4 place-self-center mt-5 h-4/5 pl-4 font-[barlow]"
+  class="flex flex-wrap bg-[#000000] md:w-1/3 w-3/4 place-self-center mt-5 h-4/5 pl-4 font-[barlow] rounded-2xl"
   id="htmx_container"
->
+> 
   <div class="flex w-full flex-col">
     <div
       class="mx-auto my-auto flex flex-col justify-center md:px-6 md:pt-0 w-full"
@@ -22,7 +22,7 @@
       </p>
       <div class="flex justify-around mb-2">
         <a
-          class="text-white bg-[#37376E] p-1.5 px-12 inline-block text-center fade-me-out hover:cursor-pointer"
+          class="text-white bg-[#37376E] p-1.5 px-12 inline-block text-center fade-me-out hover:cursor-pointer rounded-lg"
           hx-get="{% url 'account_login' %}"
           hx-target="#htmx_container"
           hx-swap="outerHTML swap:0.01s"
@@ -30,7 +30,7 @@
           >SIGN IN</a
         >
         <a
-          class="text-white fade-me-out hover:cursor-pointer fade-me-out"
+          class="text-white fade-me-out hover:cursor-pointer fade-me-out rounded-lg"
           hx-get="{% url 'account_signup' %}"
           hx-target="#htmx_container"
           hx-swap="outerHTML swap:0.01s"
@@ -75,7 +75,7 @@
             <input
               type="text"
               id="username"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer rounded-lg"
               name="login"
               placeholder=" "
               required
@@ -91,7 +91,7 @@
           <input
             type="password"
             id="password"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer rounded-lg"
             name="password"
             placeholder=" "
             required
@@ -143,7 +143,7 @@
         <div class="w-full pl-[60%]">
           <button
             type="submit"
-            class="w-1/2 rounded-lg bg-white px-4 py-2 text-center text-base font-semibold text-black shadow-md ring-gray-500 ring-offset-2 transition focus:ring-2 ml-[40%]"
+            class="w-1/2 rounded-lg bg-white px-4 py-2 text-center text-base font-semibold text-black shadow-md ring-gray-500 ring-offset-2 transition focus:ring-2 ml-[40%] hover:bg-[#37376E] hover:text-white"
           >
             Log in
           </button>
@@ -190,6 +190,7 @@
         </div>
       </a>
     </div>
+    <button class="absolute top-6 right-4 text-white text-3xl font-light hover:text-gray-400" onclick="document.getElementById('htmx_container').style.display='none'">&times;</button>
   </div>
 </div>
 
