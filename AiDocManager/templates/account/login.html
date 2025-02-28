@@ -174,9 +174,11 @@
         </button>
       </a>
       {% endcomment %}
-      <a
-        href="{% provider_login_url 'google' %}"
-        class="google-bg flex items-center justify-center w-full"
+      <form action="{% provider_login_url 'google' %}" method="POST">
+        {% csrf_token %}
+      <button
+        type="submit"
+        class="google-bg flex items-center justify-center w-full hover:cursor-pointer"
       >
         <div
           class="w-4/5 flex items-center justify-center rounded-md border px-4 py-2 outline-none bg-white text-black transition hover:border-transparent focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 font-[barlow]"
@@ -188,7 +190,8 @@
           />
           Log in with Google
         </div>
-      </a>
+      </button>
+    </form>
     </div>
   </div>
 </div>

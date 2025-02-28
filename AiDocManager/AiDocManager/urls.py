@@ -29,7 +29,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
     path("", views.home, name="home"),
-    path("idk/", include("chatbot.urls")),
+    path("app/", include("chatbot.urls")),
     # pdb.set_trace(),
     path('accounts/signup/', views.CustomSignupView.as_view(), name='account_signup'),
     path('accounts/login/', views.CustomLoginView.as_view(), name='account_login'),

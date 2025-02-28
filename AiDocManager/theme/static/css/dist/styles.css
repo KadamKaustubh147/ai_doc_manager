@@ -890,6 +890,10 @@ select {
   margin-bottom: 1.5rem;
 }
 
+.me-2 {
+  margin-inline-end: 0.5rem;
+}
+
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -916,6 +920,10 @@ select {
 
 .mt-1 {
   margin-top: 0.25rem;
+}
+
+.mt-14 {
+  margin-top: 3.5rem;
 }
 
 .mt-2 {
@@ -1109,6 +1117,10 @@ select {
   flex-wrap: wrap;
 }
 
+.items-start {
+  align-items: flex-start;
+}
+
 .items-center {
   align-items: center;
 }
@@ -1199,6 +1211,11 @@ select {
 .bg-\[\#000000\] {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[\#01796F\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(1 121 111 / var(--tw-bg-opacity, 1));
 }
 
 .bg-\[\#37376E\] {
@@ -1552,6 +1569,11 @@ select {
 .\*\:py-6 > * {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.\*\:text-white > * {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 .hover\:cursor-pointer:hover {

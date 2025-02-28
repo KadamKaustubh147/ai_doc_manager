@@ -30,7 +30,6 @@
   
   {% comment %} <div class="backdrop-blur-xl h-[50vh] w-[100%] z-8 absolute" id="overlay"></div>  {% endcomment %}
   {% comment %} <div class="bg-white opacity-35 h-[50vh] w-full z-100 absolute" id="overlay"></div> {% endcomment %}
-  <div class="backdrop-blur-3xl hidden bg-white opacity-20 h-[100vh] w-full absolute top-0 left-0 z-10" id="overlay"></div>
   <div id="cta-form-container" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 *:md:w-full *:w-full *:py-6 *:md:py-6 fade-me-out"></div>
   <section class="w-full min-h-screen bg-custom-gradient flex flex-col relative" id="cta">
     <nav class="absolute bg-transparent w-full font-[Barlow] font-semibold z-20">
@@ -62,7 +61,7 @@
                         <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Dashboard</a>
                       </li>
                       <li>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Profile</a>
+                        <a href="{% url 'profile' %}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Profile</a>
                       </li>
                       {% comment %} <li>
                         <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Earnings</a>
