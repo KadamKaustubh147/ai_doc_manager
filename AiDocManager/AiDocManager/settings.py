@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 
 from decouple import config
-
+import os
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',  # Social authentication
     'allauth.socialaccount.providers.google',  # Google login
     "django_htmx",
-    
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -188,12 +188,13 @@ SOCIALACCOUNT_PROVIDERS = {
             'profile',
             'email',
             "openid",
-            "https://www.googleapis.com/auth/drive.file",
-            "https://www.googleapis.com/auth/drive.appdata",
-            "https://www.googleapis.com/auth/drive.install",
-            "https://www.googleapis.com/auth/docs",
-            "https://www.googleapis.com/auth/drive",
-            "https://www.googleapis.com/auth/drive.metadata"
+            # "https://www.googleapis.com/auth/drive.file",
+            # "https://www.googleapis.com/auth/drive.readonly",
+            # "https://www.googleapis.com/auth/drive.appdata",
+            # "https://www.googleapis.com/auth/drive.install",
+            # "https://www.googleapis.com/auth/docs",
+            # "https://www.googleapis.com/auth/drive",
+            # "https://www.googleapis.com/auth/drive.metadata"
         ],
         'AUTH_PARAMS': {'access_type': 'online'},
     }
@@ -233,5 +234,8 @@ GOOGLE_SCOPES = config("SCOPES")
 GOOGLE_CLIENT_ID = config("DRIVE_CLIENT_ID")
 GOOGLE_CLIENT_SECRET = config("DRIVE_CLIENT_SECRET")
 GOOGLE_REDIRECT_URI = config("DRIVE_REDIRECT_URI")
+
+MEDIA_URL = '/files/'
+MEDIA_ROOT = BASE_DIR / "files"
 
 

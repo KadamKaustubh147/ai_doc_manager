@@ -133,3 +133,26 @@ nav{
     pointer-events: none;  /* Disables clicks on content */
     user-select: none;     /* Prevents text selection */
 }
+/* 
+#list_files {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: rgba(255, 255, 255, 0.5) transparent; /* Thumb & Track color */
+}
+
+/* For WebKit-based browsers (Chrome, Edge, Safari) */
+#list_files::-webkit-scrollbar {
+  width: 8px; /* Adjust scrollbar width */
+}
+
+#list_files::-webkit-scrollbar-track {
+  background: transparent; /* Transparent track */
+}
+
+#list_files::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+  border-radius: 4px; /* Rounded corners */
+}
+
+#list_files::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.8); /* Lighter color on hover */
+} */
