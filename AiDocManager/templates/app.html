@@ -89,48 +89,32 @@
               class="flex md:flex-row font-medium p-4 md:p-0 mt-4 md:mt-0 bg-transparent w-full justify-end"
             >
               <li class="">
-                <form class="flex items-center w-full mx-auto">
-                  <label for="simple-search" class="sr-only">Search</label>
-                  <div class="relative w-[40vw]">
-                    <input
-                      type="text"
-                      id="simple-search"
-                      class="bg-transparent border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-9 p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Search branch name..."
-                      required
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    class="p-2.5 ms-2 text-sm font-medium text-white rounded-lg  focus:outline-none"
-                  >
-                    <svg
-                      class="w-4 h-4"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                      />
-                    </svg>
-                    <span class="sr-only">Search</span>
-                  </button>
-                </form>
+                <form method="GET" action="{% url 'app' %}" class="flex items-center w-full mx-auto mb-4">
+    <label for="simple-search" class="sr-only">Search</label>
+    <div class="relative w-[40vw]">
+        <input
+            type="text"
+            name="q"
+            id="simple-search"
+            class="bg-transparent border border-gray-300 text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full ps-9 p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Smart Search..."
+            value="{{ search_query }}"
+        />
+    </div>
+    <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white rounded-lg focus:outline-none">
+        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+        </svg>
+        <span class="sr-only">Search</span>
+    </button>
+</form>
               </li>
 
               <div class="flex ">
-                <li>
-                  <button
-                    type="button"
-                    class="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2"
-                  >
-                    <svg
+                {% comment %} Filter starts {% endcomment %}
+                                    
+                    <button id="dropdownMenuIconButton1" title="Filter" data-dropdown-toggle="dropdownDots1" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900  rounded-lg  -mt-[14px]" type="button">
+                                      <svg
                       class="w-6 h-6 text-gray-800 dark:text-white"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
@@ -147,15 +131,35 @@
                       />
                     </svg>
 
-                    <span class="sr-only">Filter</span>
                   </button>
+
+                
+  <!-- Dropdown menu -->
+              <div id="dropdownDots1" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600 -mt[2px]">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+
+
+                      {% for category in categories %}
+ 
+                            <li>
+                              <a href="?category={{category}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ category }}</a>
+                            </li>
+                      {% endfor %}
+
+
+
+                    
+
+                  </ul>
+          
+              </div>
+
                 </li>
                 <li>
-                  <button
-                    type="button"
-                    class="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2"
-                  >
-                    <svg
+
+                    
+                    <button title="Sort" id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900  rounded-lg  " type="button">
+                                      <svg
                       class="w-6 h-6 text-gray-800 dark:text-white"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
@@ -172,9 +176,32 @@
                         d="M8 20V10m0 10-3-3m3 3 3-3m5-13v10m0-10 3 3m-3-3-3 3"
                       />
                     </svg>
-
-                    <span class="sr-only">Sort</span>
                   </button>
+
+  <!-- Dropdown menu -->
+              <div id="dropdownDots" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+                    <li>
+                      <a href="?sort=date" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Date</a>
+                    </li>
+                    <li>
+                      <a href="?sort=category" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Category</a>
+                    </li>
+                    <li>
+                      <a href="?sort=name" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Name</a>
+                    </li>
+
+                    <li>
+  <a href="?sort={{ sort }}&order={% if order == 'asc' %}desc{% else %}asc{% endif %}" 
+     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+    Ascending/Descending
+  </a>
+</li>
+
+                  </ul>
+          
+              </div>
+
                 </li>
                 <li>
                   <button
@@ -245,10 +272,10 @@
 
 
 <div class="relative overflow-x-auto flex flex-col items-center" id="iske_baad">
-  <h1 class="text-3xl self-start">Welcome to DocM</h1>
+  <h1 class="text-4xl font-bold mt-3 mb-10 text-left pl-4">Welcome to DocM</h1>
 
-    <table class="w-4/5 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table class="w-7/8 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border-collapse">
+        <thead class="text-base text-gray-700 uppercase dark:text-gray-400 border-b dark:border-gray-700 border-gray-200">
             <tr>
                 <th scope="col" class="px-6 py-3">
                     File Name
@@ -263,7 +290,7 @@
         </thead>
         <tbody>
            {% for file in files %}
-    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+    <tr class="border-b dark:border-gray-700 border-gray-200">
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
           <a hx-get="{% url 'file_details' file.id %}" hx-target="#iske_baad" hx-swap="afterend"  class="hover:cursor-pointer hover:underline">{{ file.file.name }}
             {{ file.file.url }}
@@ -292,7 +319,7 @@
     <form method="POST" enctype="multipart/form-data" class="p-4 rounded-lg w-1/4 mx-auto">
     {% csrf_token %}
     
-        <div class="flex items-center justify-center w-full">
+        <div class="mt-20 flex items-center justify-center w-full">
     <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
         <div class="flex flex-col items-center justify-center pt-5 pb-6">
             <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
@@ -304,9 +331,17 @@
         {{ form.file| attr:"id:dropzone-file" | add_class:"hidden"}}
     </label>
 </div> 
-    <button type="submit" class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition">
+
+    {% comment %} <button type="submit" class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition">
+        Submit
+    </button> {% endcomment %}
+
+    <div class="w-full flex flex-row-reverse">
+    <button type="submit" class="mt-8 items-center px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition ">
         Submit
     </button>
+    </div>
+
 </form>
 </div>
 

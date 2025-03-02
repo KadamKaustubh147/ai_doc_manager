@@ -105,8 +105,8 @@
 
         <div class="flex flex-row-reverse">
           <a
-            href="{% url 'account_reset_password' %}"
-            class="text-sm font-semibold text-[#6D24FF] hover:underline mt-1"
+            href="{% url 'forgot_password' %}"
+            class="text-sm font-semibold hover:cursor-pointer text-[#6D24FF] hover:underline mt-1"
           >
             Forgot password?
           </a>
@@ -174,21 +174,26 @@
         </button>
       </a>
       {% endcomment %}
-      <a
-        href="{% provider_login_url 'google' %}"
-        class="google-bg flex items-center justify-center w-full"
-      >
-        <div
-          class="w-4/5 flex items-center justify-center rounded-md border px-4 py-2 outline-none bg-white text-black font-medium transition hover:border-transparent focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 font-[barlow] transition duration-300 hover:bg-gray-300 hover:text-gray-800 hover:border-gray-400 focus:ring-2"
-        >
-          <img
-            class="mr-2 h-5"
-            src="https://static.cdnlogo.com/logos/g/35/google-icon.svg"
-            alt="Google logo"
-          />
-          Log in with Google
-        </div>
-      </a>
+
+      <form method="post" action="{% provider_login_url 'google' %}">
+  {% csrf_token %}
+  <button
+    type="submit"
+    class="google-bg flex items-center justify-center w-full hover:cursor-pointer"
+  >
+    <div
+      class="w-4/5 flex items-center justify-center rounded-md border px-4 py-2 outline-none bg-white text-black font-medium hover:border-transparent focus:ring-gray-800 focus:ring-offset-2 font-[barlow] transition duration-300 hover:bg-gray-300 hover:text-gray-800 hover:border-gray-400 focus:ring-2"
+    >
+      <img
+        class="mr-2 h-5"
+        src="https://static.cdnlogo.com/logos/g/35/google-icon.svg"
+        alt="Google logo"
+      />
+      Log in with Google
+    </div>
+  </button>
+</form>
+
     </div>
     <button class="absolute top-6 right-4 text-white text-3xl font-light hover:text-gray-400" onclick="document.getElementById('htmx_container').style.display='none'">&times;</button>
   </div>

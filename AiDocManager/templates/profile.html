@@ -14,8 +14,8 @@
         <p class="">Email: {{user.email}}</p>
         {% comment %} <p>{{pfp}}</p> {% endcomment %}
         </div>
-        <div>
-            <button type="button" class="focus:outline-none text-white bg-[#01796F] font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Password Reset</button>
+        <div id="put">
+            <button hx-get="{% url 'forgot_password' %}" hx-target="#put" hx-swap="afterend" type="button" class="focus:outline-none text-white bg-[#01796F] font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 hover:cursor-pointer">Password Reset</button>
             {% comment %} <a type="button" class="focus:outline-none text-white bg-[#01796F] font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2" href="{% url 'add_folder' %}">Add folder</a> {% endcomment %}
 
         </div>

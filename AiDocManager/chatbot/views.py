@@ -6,124 +6,200 @@ from .forms import FileUploadForm
 from .models import File, KeyEntity
 import requests
 import json
+from django.db.models import Q
+from django.db.models.functions import Lower
+from django.contrib.postgres.search import SearchVector
+
+
+
 
 
 # Create your views here.
 
 from allauth.socialaccount.models import SocialAccount
 
-def get_user_profile_picture(user):
-    
-    try:
-        # Get the social account for this user
-        social_account = SocialAccount.objects.get(user=user, provider='google')
-        
-        # The extra_data field contains the OAuth response data
-        extra_data = social_account.extra_data
-        
-        # Google stores the profile picture URL in the 'picture' field
-        if 'picture' in extra_data:
-            return extra_data['picture']
-    except SocialAccount.DoesNotExist:
-        pass
-    
-    return None  # Return a default if no Google account or no picture
 
+
+
+@login_required
 def profile(request):
-    profile_pic_url = get_user_profile_picture(request.user)
-    context = {
-        "pfp": profile_pic_url
-    }
+    # profile_pic_url = get_user_profile_picture(request.user)
+    context = {}
+
     return render(request, 'profile.html', context)
 
 
 
 
-API_URL = "https://projectors-sleep-paid-findlaw.trycloudflare.com/upload/"
+API_URL = "https://commissioner-relations-priorities-standings.trycloudflare.com/upload/"
 
+
+# @login_required
 # def app(request):
-#     files = None
+#     # Get sorting, filtering, and search parameters from request
+#     sort_by = request.GET.get("sort", "date")
+#     order = request.GET.get("order", "desc")  # 'asc' or 'desc'
+#     category_filter = request.GET.get("category", "")  # Category filter
+#     search_query = request.GET.get("q", "").strip()  # Search input
+
+#     # Define sorting options
+#     sort_options = {
+#         "date": "-uploaded_at" if order == "desc" else "uploaded_at",
+#         "name": "-file" if order == "desc" else "file",
+#         "category": "-document_type" if order == "desc" else "document_type",
+#     }
+    
+#     sort_field = sort_options.get(sort_by, "-uploaded_at")
+    
+#     # Filter files by user
+#     files = File.objects.filter(user=request.user)
+
+#     # Apply category filter if selected
+#     if category_filter:
+#         files = files.filter(document_type=category_filter)
+    
+#     # Apply case-sensitive search filter on summary and additional_info fields
+#     if search_query:
+#         files = files.filter(
+#             Q(summary__regex=rf".*{search_query}.*") | 
+#             Q(additional_info__regex=rf".*{search_query}.*")
+#         )
+
+#     # Apply sorting
+#     files = files.order_by(sort_field)
+
+#     # Handle file upload
 #     if request.method == "POST":
 #         form = FileUploadForm(request.POST, request.FILES)
 #         if form.is_valid():
 #             file_instance = form.save(commit=False)
-#             file_instance.user = request.user  # Link file to the user
+#             file_instance.user = request.user
 #             file_instance.save()
 
 #             # Send the uploaded file to the external API
 #             with open(file_instance.file.path, "rb") as f:
 #                 response = requests.post(API_URL, files={"file": f})
 
-#             print("API Response Text:", response.text)  # Debugging line
+#             print("API Response Status:", response.status_code)
+#             print("Raw API Response Text:", response.text)
 
 #             if response.status_code == 200:
 #                 try:
-#                     data = response.json()  # Ensure response is parsed correctly
-#                     if isinstance(data, str):  
-#                         # If it's a string, attempt to convert it manually
+#                     data = response.json()
+#                     if isinstance(data, str):
 #                         data = json.loads(data)
 #                 except ValueError:
 #                     print("Error: API response is not valid JSON:", response.text)
 #                     return redirect("app")
 
-#                 # Save extracted metadata in the File model
-#                 file_instance.document_type = data.get("document_type", "")
-#                 file_instance.summary = data.get("summary", "")
-#                 file_instance.additional_info = data.get("additional_info", "")
-#                 file_instance.save()
+#                 print("Parsed API Response:", data)
 
-#                 # Save Key Entities in the KeyEntity model
-#                 for entity in data.get("key_entities", []):
-#                     KeyEntity.objects.create(
-#                         file=file_instance,
-#                         name=entity["name"],
-#                         value=entity.get("value", ""),
-#                         entity_type=entity.get("type", ""),
-#                     )
+#                 if "document_type" in data or "summary" in data or "additional_info" in data:
+#                     file_instance.document_type = data.get("document_type", "")
+#                     file_instance.summary = data.get("summary", "")
+#                     file_instance.additional_info = data.get("additional_info", "")
+#                     file_instance.save()
+#                 else:
+#                     print("Warning: API did not return expected metadata fields!")
 
+#                 key_entities = data.get("key_entities", [])
+#                 if isinstance(key_entities, str):
+#                     try:
+#                         key_entities = json.loads(key_entities)
+#                     except json.JSONDecodeError:
+#                         print("Error: key_entities is not valid JSON:", key_entities)
+#                         key_entities = []
+
+#                 if isinstance(key_entities, list):  
+#                     for entity in key_entities:
+#                         if isinstance(entity, dict):  
+#                             KeyEntity.objects.create(
+#                                 file=file_instance,
+#                                 name=entity.get("name", ""),
+#                                 value=entity.get("value", ""),
+#                                 entity_type=entity.get("type", ""),
+#                             )
+#                         else:
+#                             print("Warning: Skipping invalid entity:", entity)
+#                 else:
+#                     print("Error: key_entities is not a list:", key_entities)
 #     else:
 #         form = FileUploadForm()
-#         files = File.objects.all().order_by("-uploaded_at")
 
 #     context = {
 #         "form": form,
-#         "files": files
+#         "files": files,
+#         "sort": sort_by,
+#         "order": order,
+#         "category_filter": category_filter,
+#         "search_query": search_query,
+#         "categories": File.objects.values_list("document_type", flat=True).distinct(),
 #     }
 #     return render(request, "app.html", context)
-import json
-import requests
 
+
+
+
+@login_required
 def app(request):
-    files = File.objects.all().order_by("-uploaded_at")  # Ensure 'files' is always defined
+    # Get sorting, filtering, and search parameters from request
+    sort_by = request.GET.get("sort", "date")
+    order = request.GET.get("order", "desc")  # 'asc' or 'desc'
+    category_filter = request.GET.get("category", "")  # Category filter
+    search_query = request.GET.get("q", "").strip()  # Search input
 
+    # Define sorting options
+    sort_options = {
+        "date": "-uploaded_at" if order == "desc" else "uploaded_at",
+        "name": "-file" if order == "desc" else "file",
+        "category": "-document_type" if order == "desc" else "document_type",
+    }
+    
+    sort_field = sort_options.get(sort_by, "-uploaded_at")
+    
+    # Filter files by user
+    files = File.objects.filter(user=request.user)
+
+    # Apply category filter if selected
+    if category_filter:
+        files = files.filter(document_type=category_filter)
+    
+    # Apply case-insensitive search on summary and additional_info
+    if search_query:
+        files = files.filter(
+            Q(summary__icontains=search_query) | 
+            Q(additional_info__icontains=search_query)
+        )        
+
+    # Apply sorting
+    files = files.order_by(sort_field)
+
+    # Handle file upload
     if request.method == "POST":
         form = FileUploadForm(request.POST, request.FILES)
         if form.is_valid():
             file_instance = form.save(commit=False)
-            file_instance.user = request.user  # Link file to the user
+            file_instance.user = request.user
             file_instance.save()
 
             # Send the uploaded file to the external API
             with open(file_instance.file.path, "rb") as f:
                 response = requests.post(API_URL, files={"file": f})
 
-            print("API Response Status:", response.status_code)  # Debugging line
-            print("Raw API Response Text:", response.text)  # Debugging line
+            print("API Response Status:", response.status_code)
+            print("Raw API Response Text:", response.text)
 
             if response.status_code == 200:
                 try:
-                    data = response.json()  # Try parsing JSON directly
-                    if isinstance(data, str):  
-                        # If API response is a string, convert manually
+                    data = response.json()
+                    if isinstance(data, str):
                         data = json.loads(data)
-
                 except ValueError:
                     print("Error: API response is not valid JSON:", response.text)
                     return redirect("app")
 
-                print("Parsed API Response:", data)  # Debugging line
+                print("Parsed API Response:", data)
 
-                # Ensure API returned proper keys
                 if "document_type" in data or "summary" in data or "additional_info" in data:
                     file_instance.document_type = data.get("document_type", "")
                     file_instance.summary = data.get("summary", "")
@@ -132,7 +208,6 @@ def app(request):
                 else:
                     print("Warning: API did not return expected metadata fields!")
 
-                # Ensure key_entities is a valid list
                 key_entities = data.get("key_entities", [])
                 if isinstance(key_entities, str):
                     try:
@@ -154,13 +229,17 @@ def app(request):
                             print("Warning: Skipping invalid entity:", entity)
                 else:
                     print("Error: key_entities is not a list:", key_entities)
-
     else:
         form = FileUploadForm()
 
     context = {
         "form": form,
-        "files": files  # 'files' is always defined now
+        "files": files,
+        "sort": sort_by,
+        "order": order,
+        "category_filter": category_filter,
+        "search_query": search_query,
+        "categories": File.objects.values_list("document_type", flat=True).distinct(),
     }
     return render(request, "app.html", context)
 

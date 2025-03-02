@@ -1,7 +1,9 @@
 import time
-from django.shortcuts import render, HttpResponse
-from allauth.account.views import SignupView, LoginView
+from django.shortcuts import render, HttpResponse, redirect
+from allauth.account.views import SignupView, LoginView, PasswordResetView, PasswordResetDoneView
 from django.template.loader import render_to_string
+from django.urls import reverse_lazy
+
 
 # Create your views here.
 
@@ -32,7 +34,7 @@ class CustomLoginView(LoginView):
         else:
             print('rendering og')
             print(f"View Execution Time: {time.time() - start_time:.3f} seconds")   
-            return render(request, "account/login.html")
+            return redirect('home')
         
 
 
@@ -45,5 +47,20 @@ class CustomSignupView(SignupView):
             return render(request, "account/signup.html#htmx_signup")
         print('rendering og')
 
-        return render(request, "account/signup.html")
-    
+        return redirect('home')
+
+        
+        
+class CustomPasswordResetView(PasswordResetView):
+    template_name = "account/password_reset.html#htmx_password_reset"  # Your custom Tailwind template
+    success_url = reverse_lazy("account_reset_password_done")  # Redirect after form submission
+
+class CustomPasswordResetDoneView(PasswordResetDoneView):
+    template_name = "account/password_reset_done.html"
+    def get(self, request, *args, **kwargs):
+        if request.htmx:
+            print("htmx")
+            return render(request, "account/password_reset_done.html#htmx_password_reset ")
+        print('rendering og')
+
+        return render(request, "account/password_reset_done.html")

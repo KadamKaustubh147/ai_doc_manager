@@ -73,9 +73,18 @@
                 </div>
             </li>
             {% if user.is_authenticated %}
+  
+
             <li class="md:mx-4">
-              <a href="{% url 'account_logout' %}" class="block py-2 px-3 text-gray-900 md:hover:text-blue-700 dark:text-white">SIGN OUT</a>
-            </li>
+  <form method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{% url 'home' %}"> 
+    <button type="submit" class="block py-2 px-3 text-gray-900 md:hover:text-blue-700 dark:text-white">
+      SIGN OUT
+    </button>
+  </form>
+</li>
+
 
             {% else %}
             <li class="md:mx-4">
@@ -88,7 +97,9 @@
               >LOG IN</a>
             </li>
             <li class="md:mx-4">
-              <a href="{% url 'account_signup' %}" class="block py-2 px-3 text-gray-900 md:hover:text-blue-700 dark:text-white hover:cursor-pointer">SIGN UP</a>
+              <a hx-get="{% url 'account_signup' %}"
+              hx-target="#cta-form-container"
+              hx-swap="innerHTML swap:0.001s" class="block py-2 px-3 text-gray-900 md:hover:text-blue-700 dark:text-white hover:cursor-pointer">SIGN UP</a>
             </li>
             {% endif %}
           </ul>
@@ -105,7 +116,7 @@
       <div class="w-1/2">
         <h1 class="text-6xl font-bold text-white mb-4">DocM</h1>
         <p class="text-xl text-white mb-6">Turn information chaos into clarity with intelligent document management.</p>
-        <p class="text-lg text-white/80 mb-10">From checkout to global sales tax compliance, companies around the world use Flowbite to simplify their payment stack.</p>
+        <p class="text-lg text-white/80 mb-10">From scattered documents to intelligent insights, DocM transforms your files with AI-powered classification, semantic search, and automated data extraction for any industry.</p>
         <a href="#" class="bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-md inline-flex items-center">
           Get started <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </a>

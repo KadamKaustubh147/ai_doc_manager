@@ -35,6 +35,7 @@ urlpatterns = [
     # pdb.set_trace(),
     path('accounts/signup/', views.CustomSignupView.as_view(), name='account_signup'),
     path('accounts/login/', views.CustomLoginView.as_view(), name='account_login'),
+    path('accounts/password/reset/', views.CustomPasswordResetView.as_view(), name='forgot_password'),
     path('accounts/', include('allauth.urls')),  # Django Allauth URLs
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
