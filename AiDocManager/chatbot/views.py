@@ -31,7 +31,7 @@ def profile(request):
 
 
 
-API_URL = "https://commissioner-relations-priorities-standings.trycloudflare.com/upload/"
+API_URL = "https://bent-screensaver-blackjack-main.trycloudflare.com/upload/"
 
 
 # @login_required
