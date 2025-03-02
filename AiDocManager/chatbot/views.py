@@ -31,7 +31,7 @@ def profile(request):
 
 
 
-API_URL = "https://bent-screensaver-blackjack-main.trycloudflare.com/upload/"
+API_URL = "https://approx-filing-repeat-premiere.trycloudflare.com/upload/"
 
 
 # @login_required
