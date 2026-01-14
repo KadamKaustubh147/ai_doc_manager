@@ -31,7 +31,7 @@ def profile(request):
 
 
 
-API_URL = "https://approx-filing-repeat-premiere.trycloudflare.com/upload/"
+API_URL = "http://127.0.0.1:9000/upload"
 
 
 # @login_required

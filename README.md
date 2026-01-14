@@ -1,4 +1,11 @@
+
 # DocM - Intelligent Document Management
+
+Demonstration Video:
+
+<iframe width="1000" height="562" src="https://www.youtube.com/embed/43OkOjOSMoo" title="DocM demonstration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
 
 ## Overview
 DocM is a cutting-edge document management system designed to streamline document processing, extraction, and organization. By leveraging advanced AI capabilities, a robust backend infrastructure, and an intuitive user interface, DocM transforms unstructured information into structured, accessible data, ensuring seamless document management.
@@ -27,7 +34,7 @@ DocM is a cutting-edge document management system designed to streamline documen
 - Shrinivas: UI/UX
 - Sambhav: API, AI and LLMOPS
 
-## Installation Steps
+## Installation Steps (To Update)
 To set up and run DocM locally, follow these steps:
 
 1. Clone the repository:
