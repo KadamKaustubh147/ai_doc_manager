@@ -3,8 +3,8 @@
 
 Demonstration Video:
 
-<iframe width="1000" height="562" src="https://www.youtube.com/embed/43OkOjOSMoo" title="DocM demonstration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+[![Watch the video](https://img.youtube.com/vi/43OkOjOSMoo/0.jpg)](https://youtu.be/43OkOjOSMoo)
 
 
 ## Overview
