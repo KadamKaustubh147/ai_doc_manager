@@ -34,7 +34,7 @@ DocM is a cutting-edge document management system designed to streamline documen
 - Shrinivas: UI/UX
 - Sambhav: API, AI and LLMOPS
 
-## Installation Steps (To Update)
+## Installation Steps (Website)
 To set up and run DocM locally, follow these steps:
 
 1. Clone the repository:
@@ -42,7 +42,9 @@ To set up and run DocM locally, follow these steps:
    git clone https://github.com/KadamKaustubh147/ai_doc_manager
    ```
 
-2. Set up a virtual environment and install dependencies:
+2. Edit .env.template with related info and rename it to .env
+
+3. Set up a virtual environment and install dependencies:
    ```sh
    # On Linux/MacOS
    python3 -m venv .venv
@@ -73,3 +75,38 @@ To set up and run DocM locally, follow these steps:
    ```
    http://127.0.0.1:8000/
    ```
+
+## Installation steps (AI_layer)
+
+1. First deactivate any web layer virtual environment or any other virtual environment
+
+```bash
+   deactivate
+```
+
+2. Navigate to Ai_layer director
+
+```bash
+   cd Ai_layer
+```
+
+
+
+3. Set up a virtual environment and install dependencies:
+   ```sh
+   # On Linux/MacOS
+   python3 -m venv .venv
+   source .venv/bin/activate  
+
+   # On Windows: 
+   python -m venv .venv
+   .venv\Scripts\activate
+
+   pip install -r requirements_ai.txt
+   ```
+
+4. Run the application
+
+```bash
+   uvicorn main:app --port 9000
+```
